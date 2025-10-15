@@ -1,7 +1,7 @@
 import { Injectable, signal, inject } from '@angular/core';
-import { AlmoxarifadoDB, ReportType, Movement, Item } from '../models';
-import { ToastService } from './toast.service';
-import { GeminiService } from './gemini.service';
+import { AlmoxarifadoDB, ReportType, Movement, Item } from '../models.ts';
+import { ToastService } from './toast.service.ts';
+import { GeminiService } from './gemini.service.ts';
 
 export interface ReportState {
   status: 'idle' | 'running' | 'success' | 'error';

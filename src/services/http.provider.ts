@@ -20,8 +20,8 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
-import { DataProvider, CollectionWithId, CreationPayload } from './data.provider';
-import { AlmoxarifadoDB, Item, Movement, AuditLog, Technician, Supplier, PickingList, PurchaseOrder, RedShelfItem, Kit, Reservation, User } from '../models';
+import { DataProvider, CollectionWithId, CreationPayload } from './data.provider.ts';
+import { AlmoxarifadoDB, Item, Movement, AuditLog, Technician, Supplier, PickingList, PurchaseOrder, RedShelfItem, Kit, Reservation, User } from '../models.ts';
 
 const API_BASE_URL = 'http://localhost:5001/api'; // <-- AJUSTE A URL DA SUA API AQUI
 

@@ -1,8 +1,8 @@
 import { Injectable, inject, signal, computed } from '@angular/core';
 import { Router } from '@angular/router';
-import { DatabaseService } from './database.service';
+import { DatabaseService } from './database.service.ts';
 // FIX: Import 'View' type to resolve 'Cannot find name' error.
-import { User, UserRole, Permission, View } from '../models';
+import { User, UserRole, Permission, View } from '../models.ts';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {

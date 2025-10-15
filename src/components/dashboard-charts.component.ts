@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, input, effect, viewChild, ElementRef, OnDestroy, inject, AfterViewInit, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { D3Service } from '../services/d3.service';
+import { D3Service } from '../services/d3.service.ts';
 
 export interface DonutChartData {
   name: string;

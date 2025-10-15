@@ -1,8 +1,8 @@
 import { Component, ChangeDetectionStrategy, inject, computed, signal } from '@angular/core';
 import { CommonModule, CurrencyPipe, DatePipe } from '@angular/common';
-import { DatabaseService } from '../services/database.service';
-import { DashboardChartsComponent, DonutChartData, LineChartData } from './dashboard-charts.component';
-import { Movement, Item } from '../models';
+import { DatabaseService } from '../services/database.service.ts';
+import { DashboardChartsComponent, DonutChartData, LineChartData } from './dashboard-charts.component.ts';
+import { Movement, Item } from '../models.ts';
 
 @Component({
   selector: 'app-dashboard',

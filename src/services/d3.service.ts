@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as d3 from 'd3';
-import { DonutChartData, LineChartData } from '../components/dashboard-charts.component';
+import { DonutChartData, LineChartData } from '../components/dashboard-charts.component.ts';
 
 @Injectable({ providedIn: 'root' })
 export class D3Service {

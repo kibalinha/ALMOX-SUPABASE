@@ -1,9 +1,9 @@
 import { Injectable, inject, signal, computed } from '@angular/core';
 import { GoogleGenAI, Type, GenerateContentResponse } from '@google/genai';
-import { ToastService } from './toast.service';
+import { ToastService } from './toast.service.ts';
 // FIX: Added Technician to the import list
-import { AlmoxarifadoDB, SearchFilter, Supplier, Item, Movement, Forecast, Technician, AnomalyReport, ParsedInvoiceItem } from '../models';
-import { DatabaseService } from './database.service';
+import { AlmoxarifadoDB, SearchFilter, Supplier, Item, Movement, Forecast, Technician, AnomalyReport, ParsedInvoiceItem } from '../models.ts';
+import { DatabaseService } from './database.service.ts';
 
 const API_KEY = 'AIzaSyD8vXaz02qPam5QVK0ltx90C4d-BIctcDE';
 

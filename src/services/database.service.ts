@@ -3,9 +3,9 @@ import {
     AlmoxarifadoDB, Item, Movement, Technician, Supplier, AuditLog, View, 
     RedShelfItem, PurchaseOrder, ItemWithAvailableStock, PickingList,
     PurchaseOrderStatus, PickingListStatus, Kit, Reservation, ReservationStatus, User
-} from '../models';
-import { DataProvider, CreationPayload } from './data.provider';
-import { ToastService } from './toast.service';
+} from '../models.ts';
+import { DataProvider, CreationPayload } from './data.provider.ts';
+import { ToastService } from './toast.service.ts';
 
 type CollectionWithId = keyof Omit<AlmoxarifadoDB, 'categories' | 'auditLogs'>;
 // FIX: Add Kit and Reservation to the union type.

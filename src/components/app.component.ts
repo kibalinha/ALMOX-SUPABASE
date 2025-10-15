@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs/operators';
 // FIX: Corrected import paths to be relative to the current directory.
-import { View } from '../models';
-import { SidebarComponent } from './sidebar.component';
-import { ToastContainerComponent } from './toast-container.component';
-import { ChatbotComponent } from './chatbot.component';
-import { CommandPaletteComponent, Command } from './command-palette.component';
-import { GeminiService } from '../services/gemini.service';
-import { AuthService } from '../services/auth.service';
+import { View } from '../models.ts';
+import { SidebarComponent } from './sidebar.component.ts';
+import { ToastContainerComponent } from './toast-container.component.ts';
+import { ChatbotComponent } from './chatbot.component.ts';
+import { CommandPaletteComponent, Command } from './command-palette.component.ts';
+import { GeminiService } from '../services/gemini.service.ts';
+import { AuthService } from '../services/auth.service.ts';
 
 @Component({
   selector: 'app-root',

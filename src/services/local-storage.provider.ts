@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { DataProvider, CollectionWithId, CreationPayload } from './data.provider';
-import { AlmoxarifadoDB, Item, Movement, AuditLog, Technician, Supplier, RedShelfItem, PurchaseOrderStatus, UserRole, Kit, Reservation, User } from '../models';
+import { DataProvider, CollectionWithId, CreationPayload } from './data.provider.ts';
+import { AlmoxarifadoDB, Item, Movement, AuditLog, Technician, Supplier, RedShelfItem, PurchaseOrderStatus, UserRole, Kit, Reservation, User } from '../models.ts';
 
 const DB_KEY = 'almoxarifadoDB';
 
@@ -265,8 +265,8 @@ export class LocalStorageProvider extends DataProvider {
 
   adjustItemQuantity(itemId: string, newQuantity: number, notes: string, isRedShelf: boolean): Promise<{ updatedItem: Item | RedShelfItem; newMovement: Movement; }> {
     const db = this.readDb();
-    const collectionKey = isRedShelf ? 'redShelfItems' : 'items';
-    const item: Item | RedShelfItem | undefined = db[collectionKey].find(i => i.id === itemId);
+    const collectionKey = isRedShelf ? 'red_shelf_items' : 'items';
+    const item: Item | RedShelfItem | undefined = (db as any)[collectionKey].find((i: any) => i.id === itemId);
 
     if (!item) {
         return Promise.reject(new Error('Item não encontrado.'));

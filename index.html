@@ -182,17 +182,17 @@
     import '@angular/compiler';
     import { bootstrapApplication } from '@angular/platform-browser';
     import { provideHttpClient } from '@angular/common/http';
-    import { AppComponent } from './src/components/app.component';
+    import { AppComponent } from './src/components/app.component.ts';
     import { provideZonelessChangeDetection, LOCALE_ID } from '@angular/core';
     import { registerLocaleData } from '@angular/common';
     import localePt from '@angular/common/locales/pt';
     import { provideRouter, withHashLocation, withComponentInputBinding } from '@angular/router';
-    import { APP_ROUTES } from './src/app.routes';
+    import { APP_ROUTES } from './src/app.routes.ts';
 
     // --- ARQUITETURA DE DADOS ---
-    import { DataProvider } from './src/services/data.provider';
+    import { DataProvider } from './src/services/data.provider.ts';
     // Para usar um backend Supabase (padrão):
-    import { SupabaseProvider } from './src/services/supabase.provider';
+    import { SupabaseProvider } from './src/services/supabase.provider.ts';
 
     // Registra os dados de localização para o português do Brasil.
     registerLocaleData(localePt);

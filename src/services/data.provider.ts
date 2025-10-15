@@ -1,4 +1,4 @@
-import { AlmoxarifadoDB, Item, Movement, AuditLog, Technician, Supplier, PurchaseOrder, PickingList, RedShelfItem, Kit, Reservation, User } from '../models';
+import { AlmoxarifadoDB, Item, Movement, AuditLog, Technician, Supplier, PurchaseOrder, PickingList, RedShelfItem, Kit, Reservation, User } from '../models.ts';
 
 // Define um tipo para as chaves de coleção que contêm entidades com um 'id'.
 export type CollectionWithId = keyof Omit<AlmoxarifadoDB, 'categories' | 'auditLogs'>;

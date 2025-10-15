@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { DataProvider, CollectionWithId, CreationPayload } from './data.provider';
-import { AlmoxarifadoDB, Item, Movement, AuditLog, Technician, Supplier, RedShelfItem, PurchaseOrder, PickingList, Kit, Reservation, User } from '../models';
-import { supabase } from './supabase.client';
+import { DataProvider, CollectionWithId, CreationPayload } from './data.provider.ts';
+import { AlmoxarifadoDB, Item, Movement, AuditLog, Technician, Supplier, RedShelfItem, PurchaseOrder, PickingList, Kit, Reservation, User } from '../models.ts';
+import { supabase } from './supabase.client.ts';
 import { PostgrestError } from '@supabase/supabase-js';
 
 // Mapeia os nomes das coleções do modelo para os nomes das tabelas no Supabase (snake_case)
