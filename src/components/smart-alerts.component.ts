@@ -97,7 +97,7 @@ import { AnomalyReport, Item, AlmoxarifadoDB } from '../models';
   `
 })
 export class SmartAlertsComponent {
-  // FIX: Moved service injection to the constructor to resolve potential 'this' context issues during class initialization.
+  // FIX: Refactored dependency injection to use property initializers.
   private dbService = inject(DatabaseService);
   private geminiService = inject(GeminiService);
   private toastService = inject(ToastService);

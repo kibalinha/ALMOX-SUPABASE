@@ -25,6 +25,7 @@ export type View =
   | 'users'; // Added users view
 
 // A list of all possible views/features that can have permissions
+// FIX: Corrected Permission type to be a union of string literals.
 export type Permission = View | 'manage_users' | 'manage_settings';
 
 export const ALL_PERMISSIONS: { id: Permission, label: string }[] = [

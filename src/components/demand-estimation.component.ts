@@ -139,7 +139,7 @@ import { DashboardChartsComponent, LineChartData } from './dashboard-charts.comp
   `
 })
 export class DemandEstimationComponent {
-  // FIX: Moved service injection to the constructor to resolve potential 'this' context issues during class initialization.
+  // FIX: Refactored dependency injection to use property initializers.
   private dbService = inject(DatabaseService);
   geminiService = inject(GeminiService);
   private toastService = inject(ToastService);
