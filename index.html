@@ -178,6 +178,40 @@
 </head>
 <body class="bg-slate-100 text-slate-800 dark:text-neutral antialiased transition-colors duration-300 dark:bg-gradient-to-br dark:from-slate-900 dark:to-slate-700">
   <app-root></app-root>
-  <script type="module" src="index.tsx"></script>
+  <script type="module">
+    import '@angular/compiler';
+    import { bootstrapApplication } from '@angular/platform-browser';
+    import { provideHttpClient } from '@angular/common/http';
+    import { AppComponent } from './src/components/app.component';
+    import { provideZonelessChangeDetection, LOCALE_ID } from '@angular/core';
+    import { registerLocaleData } from '@angular/common';
+    import localePt from '@angular/common/locales/pt';
+    import { provideRouter, withHashLocation, withComponentInputBinding } from '@angular/router';
+    import { APP_ROUTES } from './src/app.routes';
+
+    // --- ARQUITETURA DE DADOS ---
+    import { DataProvider } from './src/services/data.provider';
+    // Para usar um backend Supabase (padrão):
+    import { SupabaseProvider } from './src/services/supabase.provider';
+
+    // Registra os dados de localização para o português do Brasil.
+    registerLocaleData(localePt);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      bootstrapApplication(AppComponent, {
+        providers: [
+          provideZonelessChangeDetection(),
+          provideHttpClient(),
+          provideRouter(APP_ROUTES, withHashLocation(), withComponentInputBinding()),
+          // Define o local padrão da aplicação como 'pt-BR'.
+          { provide: LOCALE_ID, useValue: 'pt-BR' },
+          
+          // --- CONFIGURAÇÃO DO PROVEDOR DE DADOS ---
+          // Para usar o Supabase (padrão):
+          { provide: DataProvider, useClass: SupabaseProvider },
+        ],
+      }).catch((err) => console.error(err));
+    });
+  </script>
 </body>
 </html>
