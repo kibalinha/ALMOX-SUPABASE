@@ -1,7 +1,7 @@
 import '@angular/compiler';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideHttpClient } from '@angular/common/http';
-import { AppComponent } from './src/app.component';
+import { AppComponent } from './src/components/app.component';
 import { provideZonelessChangeDetection, LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
