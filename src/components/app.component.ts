@@ -22,7 +22,7 @@ import { AuthService } from '../services/auth.service';
     ChatbotComponent,
     CommandPaletteComponent,
   ],
-  templateUrl: './app.component.html',
+  templateUrl: '../app.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '(document:keydown.control.k)': 'toggleCommandPalette($event)',
