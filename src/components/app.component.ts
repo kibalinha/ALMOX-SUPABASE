@@ -2,13 +2,14 @@ import { Component, ChangeDetectionStrategy, signal, computed, inject, OnInit } 
 import { CommonModule } from '@angular/common';
 import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { View } from './models';
-import { SidebarComponent } from './components/sidebar.component';
-import { ToastContainerComponent } from './components/toast-container.component';
-import { ChatbotComponent } from './components/chatbot.component';
-import { CommandPaletteComponent, Command } from './components/command-palette.component';
-import { GeminiService } from './services/gemini.service';
-import { AuthService } from './services/auth.service';
+// FIX: Corrected import paths to be relative to the current directory.
+import { View } from '../models';
+import { SidebarComponent } from './sidebar.component';
+import { ToastContainerComponent } from './toast-container.component';
+import { ChatbotComponent } from './chatbot.component';
+import { CommandPaletteComponent, Command } from './command-palette.component';
+import { GeminiService } from '../services/gemini.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-root',

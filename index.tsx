@@ -23,25 +23,30 @@ import { SupabaseProvider } from './src/services/supabase.provider';
 // Registra os dados de localização para o português do Brasil.
 registerLocaleData(localePt);
 
-bootstrapApplication(AppComponent, {
-  providers: [
-    provideZonelessChangeDetection(),
-    provideHttpClient(),
-    provideRouter(APP_ROUTES, withHashLocation(), withComponentInputBinding()),
-    // Define o local padrão da aplicação como 'pt-BR'.
-    { provide: LOCALE_ID, useValue: 'pt-BR' },
-    
-    // --- CONFIGURAÇÃO DO PROVEDOR DE DADOS ---
-    // Para usar o Supabase (padrão):
-    { provide: DataProvider, useClass: SupabaseProvider },
+document.addEventListener('DOMContentLoaded', () => {
+  bootstrapApplication(AppComponent, {
+    providers: [
+      provideZonelessChangeDetection(),
+      provideHttpClient(),
+      provideRouter(APP_ROUTES, withHashLocation(), withComponentInputBinding()),
+      // Define o local padrão da aplicação como 'pt-BR'.
+      { provide: LOCALE_ID, useValue: 'pt-BR' },
+      
+      // --- CONFIGURAÇÃO DO PROVEDOR DE DADOS ---
+      // Para usar o Supabase (padrão):
+      { provide: DataProvider, useClass: SupabaseProvider },
 
-    // Para usar o localStorage (modo offline), comente a linha acima e descomente a abaixo.
-    // { provide: DataProvider, useClass: LocalStorageProvider },
-    
-    // Para conectar a um backend ASP.NET, comente as outras e descomente a linha abaixo.
-    // Lembre-se também de descomentar o conteúdo do arquivo 'src/services/http.provider.ts'.
-    // { provide: DataProvider, useClass: HttpProvider },
-  ],
-}).catch((err) => console.error(err));
+      // Para usar o localStorage (modo offline), comente a linha acima e descomente a abaixo.
+      // { provide: DataProvider, useClass: LocalStorageProvider },
+      
+      // Para conectar a um backend ASP.NET, comente as outras e descomente a linha abaixo.
+      // Lembre-se também de descomentar o conteúdo do arquivo 'src/services/http.provider.ts'.
+      // { provide: DataProvider, useClass: HttpProvider },
+    ],
+  }).catch((err) => console.error(err));
+});
+
+
+// AI Studio always uses an `index.tsx` file for all project types$.
 
 // AI Studio always uses an `index.tsx` file for all project types.
