@@ -1122,7 +1122,8 @@ export class InventoryComponent implements OnDestroy {
     
     try {
       if (newCategories.size > 0) {
-        await this.dbService.addCategories(Array.from(newCategories));
+        // FIX: Use spread syntax to convert Set<string> to string[], ensuring correct type inference.
+        await this.dbService.addCategories([...newCategories]);
       }
       await this.dbService.addMultipleItems(itemsToCreate, false);
       this.toastService.addToast(`${itemsToCreate.length} itens salvos com sucesso!`, 'success');
