@@ -170,7 +170,7 @@ interface AiSuggestion {
                   <span class="ml-1">{{ sortDirection() === 'asc' ? '▲' : '▼' }}</span>
                 }
               </th>
-              <th class="p-3">Fornecedor</th>
+              <th class="p-3">Fornecedor Pref.</th>
               <th class="p-3">Ações</th>
             </tr>
           </thead>
@@ -198,7 +198,6 @@ interface AiSuggestion {
                   </span>
                 </td>
                 <td class="p-3">{{ item.reorderPoint }}</td>
-                <!-- FIX: Changed item.supplierId to item.preferredSupplierId -->
                 <td class="p-3">{{ getSupplierName(item.preferredSupplierId) }}</td>
                 <td class="p-3 flex items-center space-x-2">
                    <button (click)="viewLifecycle(item)" class="p-1 text-slate-500 dark:text-slate-300 hover:text-accent" title="Ciclo de Vida do Item">
@@ -253,8 +252,7 @@ interface AiSuggestion {
                   </div>
                   <div class="mt-4 grid grid-cols-2 gap-4 items-baseline">
                     <div>
-                      <!-- FIX: Changed item.supplierId to item.preferredSupplierId -->
-                      <p class="text-sm text-slate-600 dark:text-slate-300">Fornecedor: <span class="font-medium">{{ getSupplierName(item.preferredSupplierId) }}</span></p>
+                      <p class="text-sm text-slate-600 dark:text-slate-300">Fornecedor Pref.: <span class="font-medium">{{ getSupplierName(item.preferredSupplierId) }}</span></p>
                       <p class="text-sm text-slate-500 dark:text-slate-400">Ponto Ressup.: <span class="font-medium">{{ item.reorderPoint }}</span></p>
                     </div>
                     <div class="text-right">
@@ -330,8 +328,7 @@ interface AiSuggestion {
                   <input type="number" formControlName="price" class="w-full bg-slate-100 dark:bg-secondary p-2 rounded" />
                 </div>
                 <div>
-                  <label class="block text-sm mb-1">Fornecedor</label>
-                  <!-- FIX: Changed formControlName to preferredSupplierId -->
+                  <label class="block text-sm mb-1">Fornecedor Preferencial</label>
                   <select formControlName="preferredSupplierId" class="w-full bg-slate-100 dark:bg-secondary p-2 rounded">
                     <option [ngValue]="null">Nenhum</option>
                     @for(supplier of db().suppliers; track supplier.id) {
@@ -896,12 +893,12 @@ export class InventoryComponent implements OnDestroy {
 
   openItemForm(item: Item | null = null, initialData: Partial<ItemForm> = {}) {
     this.currentItem.set(item);
+    // FIX: Changed 'supplierId' to 'preferredSupplierId' to match the data model and template.
     this.itemForm = this.fb.group({
       name: [item?.name ?? initialData.name ?? '', Validators.required],
       category: [item?.category ?? initialData.category ?? this.db().categories[0] ?? '', Validators.required],
       price: [item?.price ?? initialData.price ?? 0, [Validators.required, Validators.min(0)]],
       description: [item?.description ?? initialData.description ?? ''],
-      // FIX: Changed formControlName to preferredSupplierId
       preferredSupplierId: [item?.preferredSupplierId ?? initialData.preferredSupplierId ?? null],
       reorderPoint: [item?.reorderPoint ?? initialData.reorderPoint ?? 10, [Validators.required, Validators.min(0)]],
       quantity: [item?.quantity ?? initialData.quantity ?? 0, Validators.min(0)],

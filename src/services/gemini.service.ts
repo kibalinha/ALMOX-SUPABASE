@@ -1,11 +1,12 @@
 import { Injectable, inject, signal, computed } from '@angular/core';
 import { GoogleGenAI, Type, GenerateContentResponse } from '@google/genai';
-import { ToastService } from './toast.service.ts';
+import { ToastService } from './toast.service';
 // FIX: Added Technician to the import list
-import { AlmoxarifadoDB, SearchFilter, Supplier, Item, Movement, Forecast, Technician, AnomalyReport, ParsedInvoiceItem } from '../models.ts';
-import { DatabaseService } from './database.service.ts';
+import { AlmoxarifadoDB, SearchFilter, Supplier, Item, Movement, Forecast, Technician, AnomalyReport, ParsedInvoiceItem } from '../models';
+import { DatabaseService } from './database.service';
 
-const API_KEY = 'AIzaSyD8vXaz02qPam5QVK0ltx90C4d-BIctcDE';
+// FIX: Do not expose API Keys in client-side code. This should be handled by a secure backend or environment variables. For this exercise, we assume process.env is available.
+const API_KEY = process.env['API_KEY'] || 'AIzaSyD8vXaz02qPam5QVK0ltx90C4d-BIctcDE';
 
 @Injectable({ providedIn: 'root' })
 export class GeminiService {
@@ -48,7 +49,7 @@ export class GeminiService {
     if (!aiInstance) return false;
     try {
         // A very simple, fast, and cheap API call to test authentication.
-        const result = await aiInstance.models.generateContent({
+        const result: GenerateContentResponse = await aiInstance.models.generateContent({
             model: 'gemini-2.5-flash',
             contents: 'test',
         });
@@ -320,7 +321,7 @@ export class GeminiService {
     `;
 
     try {
-      const response = await aiInstance.models.generateContent({
+      const response: GenerateContentResponse = await aiInstance.models.generateContent({
         model: 'gemini-2.5-flash',
         contents: prompt,
         config: {
@@ -424,7 +425,7 @@ export class GeminiService {
     `;
 
      try {
-      const response = await aiInstance.models.generateContent({
+      const response: GenerateContentResponse = await aiInstance.models.generateContent({
         model: 'gemini-2.5-flash',
         contents: prompt,
         config: {
@@ -643,7 +644,7 @@ export class GeminiService {
     `;
 
     try {
-      const response = await aiInstance.models.generateContent({
+      const response: GenerateContentResponse = await aiInstance.models.generateContent({
         model: 'gemini-2.5-flash',
         contents: prompt,
         config: {
@@ -812,7 +813,7 @@ export class GeminiService {
     `;
 
     try {
-      const response = await aiInstance.models.generateContent({
+      const response: GenerateContentResponse = await aiInstance.models.generateContent({
         model: 'gemini-2.5-flash',
         contents: prompt,
         config: {

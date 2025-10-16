@@ -1,12 +1,12 @@
 import { Routes } from '@angular/router';
-import { authGuard } from './guards/auth.guard.ts';
-import { adminGuard } from './guards/admin.guard.ts';
+import { authGuard } from './guards/auth.guard';
+import { adminGuard } from './guards/admin.guard';
 
 export const APP_ROUTES: Routes = [
   { 
     path: 'login', 
     title: 'Login', 
-    loadComponent: () => import('./components/login.component.ts').then(c => c.LoginComponent) 
+    loadComponent: () => import('./components/login.component').then(c => c.LoginComponent) 
   },
   {
     path: '',
@@ -16,109 +16,119 @@ export const APP_ROUTES: Routes = [
       { 
         path: 'dashboard', 
         title: 'Dashboard', 
-        loadComponent: () => import('./components/dashboard.component.ts').then(c => c.DashboardComponent) 
+        loadComponent: () => import('./components/dashboard.component').then(c => c.DashboardComponent) 
       },
       { 
         path: 'inventory', 
         title: 'Inventário', 
-        // FIX: Corrected import path for InventoryComponent to resolve module loading error.
-        loadComponent: () => import('./inventory.component.ts').then(c => c.InventoryComponent) 
+        // FIX: Point to the correct component file path to resolve module loading conflict.
+        loadComponent: () => import('./inventory.component').then(c => c.InventoryComponent) 
       },
       { 
         path: 'red_shelf', 
         title: 'Prateleira Vermelha', 
-        loadComponent: () => import('./components/red-shelf.component.ts').then(c => c.RedShelfComponent) 
+        loadComponent: () => import('./components/red-shelf.component').then(c => c.RedShelfComponent) 
       },
       { 
         path: 'entry', 
         title: 'Entrada de Itens', 
         data: { movementType: 'in' },
-        loadComponent: () => import('./components/movements.component.ts').then(c => c.MovementsComponent) 
+        loadComponent: () => import('./components/movements.component').then(c => c.MovementsComponent) 
       },
       { 
         path: 'exit', 
         title: 'Saída de Itens', 
         data: { movementType: 'out' },
-        loadComponent: () => import('./components/movements.component.ts').then(c => c.MovementsComponent) 
+        loadComponent: () => import('./components/movements.component').then(c => c.MovementsComponent) 
       },
       { 
         path: 'purchase_orders', 
         title: 'Ordens de Compra', 
-        loadComponent: () => import('./components/purchase-orders.component.ts').then(c => c.PurchaseOrdersComponent) 
+        loadComponent: () => import('./components/purchase-orders.component').then(c => c.PurchaseOrdersComponent) 
       },
       { 
         path: 'picking_lists', 
         title: 'Listas de Coleta', 
-        loadComponent: () => import('./components/picking-lists.component.ts').then(c => c.PickingListsComponent) 
+        loadComponent: () => import('./components/picking-lists.component').then(c => c.PickingListsComponent) 
       },
       { 
         path: 'cycle_count', 
         title: 'Contagem Cíclica', 
-        loadComponent: () => import('./components/cycle-count.component.ts').then(c => c.CycleCountComponent) 
+        loadComponent: () => import('./components/cycle-count.component').then(c => c.CycleCountComponent) 
       },
       { 
         path: 'stocktake', 
         title: 'Inventário Físico', 
-        loadComponent: () => import('./components/stocktake.component.ts').then(c => c.StocktakeComponent) 
+        loadComponent: () => import('./components/stocktake.component').then(c => c.StocktakeComponent) 
       },
       { 
         path: 'purchase_suggestion', 
         title: 'Sugestão de Compra', 
-        loadComponent: () => import('./components/purchase-suggestion.component.ts').then(c => c.PurchaseSuggestionComponent) 
+        loadComponent: () => import('./components/purchase-suggestion.component').then(c => c.PurchaseSuggestionComponent) 
       },
       { 
         path: 'technicians', 
         title: 'Técnicos', 
         data: { type: 'technicians' },
-        loadComponent: () => import('./components/management.component.ts').then(c => c.ManagementComponent) 
+        loadComponent: () => import('./components/management.component').then(c => c.ManagementComponent) 
       },
       { 
         path: 'suppliers', 
         title: 'Fornecedores', 
         data: { type: 'suppliers' },
-        loadComponent: () => import('./components/management.component.ts').then(c => c.ManagementComponent) 
+        loadComponent: () => import('./components/management.component').then(c => c.ManagementComponent) 
       },
       { 
         path: 'reports', 
         title: 'Relatórios', 
-        loadComponent: () => import('./components/reports.component.ts').then(c => c.ReportsComponent) 
+        loadComponent: () => import('./components/reports.component').then(c => c.ReportsComponent) 
       },
       { 
         path: 'smart_alerts', 
         title: 'Alertas Inteligentes', 
-        loadComponent: () => import('./components/smart-alerts.component.ts').then(c => c.SmartAlertsComponent) 
+        loadComponent: () => import('./components/smart-alerts.component').then(c => c.SmartAlertsComponent) 
       },
       { 
         path: 'demand_estimation', 
         title: 'Estimar Demanda', 
-        loadComponent: () => import('./components/demand-estimation.component.ts').then(c => c.DemandEstimationComponent) 
+        loadComponent: () => import('./components/demand-estimation.component').then(c => c.DemandEstimationComponent) 
       },
       { 
         path: 'audit_log', 
         title: 'Log de Auditoria', 
-        loadComponent: () => import('./components/audit-log.component.ts').then(c => c.AuditLogComponent) 
+        loadComponent: () => import('./components/audit-log.component').then(c => c.AuditLogComponent) 
       },
       { 
         path: 'settings', 
         title: 'Configurações',
         canActivate: [adminGuard],
-        loadComponent: () => import('./components/settings.component.ts').then(c => c.SettingsComponent) 
+        loadComponent: () => import('./components/settings.component').then(c => c.SettingsComponent) 
       },
        { 
         path: 'users', 
         title: 'Gerenciar Usuários',
         canActivate: [adminGuard],
-        loadComponent: () => import('./components/users.component.ts').then(c => c.UsersComponent) 
+        loadComponent: () => import('./components/users.component').then(c => c.UsersComponent) 
       },
       { 
         path: 'kiosk', 
         title: 'Kiosk', 
-        loadComponent: () => import('./components/kiosk.component.ts').then(c => c.KioskComponent) 
+        loadComponent: () => import('./components/kiosk.component').then(c => c.KioskComponent) 
       },
       { 
         path: 'item_lifecycle', 
         title: 'Ciclo de Vida', 
-        loadComponent: () => import('./components/item-lifecycle.component.ts').then(c => c.ItemLifecycleComponent) 
+        loadComponent: () => import('./components/item-lifecycle.component').then(c => c.ItemLifecycleComponent) 
+      },
+       { 
+        path: 'kits', 
+        title: 'Kits', 
+        loadComponent: () => import('./components/kits.component').then(c => c.KitsComponent) 
+      },
+      { 
+        path: 'reservations', 
+        title: 'Reservas', 
+        loadComponent: () => import('./components/reservations.component').then(c => c.ReservationsComponent) 
       },
       { path: '**', redirectTo: 'dashboard' }
     ]
